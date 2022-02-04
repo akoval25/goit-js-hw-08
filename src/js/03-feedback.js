@@ -26,7 +26,11 @@ function onSubmit(e) {
 }
 
 function onInput(e) {
-  formData[e.target.name] = e.target.value;
+
+    const formData = {
+    email: inputRef.value,
+    message: textareaRef.value,
+  };
 
   localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 }
@@ -35,7 +39,7 @@ function inputText() {
   const text = localStorage.getItem('feedback-form-state');
 
   if (text) {
-    inputRef.value = JSON.parse(text).email;
-    textareaRef.value = JSON.parse(text).message;
+    inputRef.value = JSON.parse(text).email || '';
+    textareaRef.value = JSON.parse(text).message || '';
   }
 }
